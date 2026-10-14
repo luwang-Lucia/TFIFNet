@@ -32,6 +32,7 @@ def data_evaluate(model,
 
     with open(test_path, 'r') as f:
         if dataset == 'VOC':
+            # im_dir = test_path.replace('/ImageSets/Main/test.txt', '/JPEGImages')
             im_dir = test_path.replace('/val.txt', '/JPEGImages')
             ims_list = [os.path.join(im_dir, x.strip('\n') + '.jpg') for x in f.readlines()]
         else:
@@ -56,7 +57,7 @@ def data_evaluate(model,
                     res[k, 4], res[k, 5], res[k, 6], res[k, 7])
                 )
         assert len(os.listdir(os.path.join(root_dir, 'ground-truth'))) != 0, 'No labels found in test/ground-truth!! '
-    mAP = eval_mAP(root_dir, use_07_metric=True, thres=0.5)
+    mAP = eval_mAP(root_dir, use_07_metric=False, thres=0.5)
 
     pf = '%20s' + '%10.4g' * 6
     print(pf % ('all', len(ims_list), nt, 0, 0, mAP, 0))
@@ -70,9 +71,10 @@ def evaluate(target_size,
              weight=None,
              model=None,
              hyps=None,
-             conf=0.01):
+             conf=0.3):
     if model is None:
-        model = Siam(backbone=backbone, hyps=hyps)
+        # model = Siam(backbone=backbone, hyps=hyps)
+        model = WakeNet(backbone=backbone, hyps=hyps)
         if weight.endswith('.pth'):
             chkpt = torch.load(weight)
 
@@ -90,11 +92,12 @@ def evaluate(target_size,
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Hyperparams')
     parser.add_argument('--backbone', dest='backbone', default='fca50', type=str)
-    parser.add_argument('--weight', type=str, default='weights/best.pth')
+    parser.add_argument('--weight', type=str, default='weights/best_wakenet.pth')
     parser.add_argument('--target_size', dest='target_size', default=768, type=int)
     parser.add_argument('--hyp', type=str, default='hyp.py', help='hyper-parameter path')
     parser.add_argument('--dataset', nargs='?', type=str, default='SWIM')
-    parser.add_argument('--test_path', type=str, default='SAR-WAKE/val.txt')
+    # parser.add_argument('--test_path', type=str, default='vis/FeatureMap/featuremap.txt')
+    parser.add_argument('--test_path', type=str, default='datasets/SAR-WAKE/test.txt')
 
     arg = parser.parse_args()
     hyps = hyp_parse(arg.hyp)
