@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this code in your research, please cite the paper below."
+title: "TFIFNet: Mamba-Based Time-Frequency Interactive Fusion Network for SAR Ship Wake Detection"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Lu
+    orcid: "https://orcid.org/0000-0001-5099-0522"
+    affiliation: "Harbin Engineering University"
+  - family-names: Sun
+    given-names: Bailiang
+  - family-names: Wang
+    given-names: Hongxing
+  - family-names: Huang
+    given-names: Shaoguang
+  - family-names: Ohtsuki
+    given-names: Tomoaki
+  - family-names: Mathiopoulos
+    given-names: "P. Takis"
+repository-code: "https://github.com/luwang-Lucia/TFIFNet"
+license: Apache-2.0
+year: 2026
+preferred-citation:
+  type: article
+  title: "Mamba-Based Time-Frequency Interactive Fusion Network for SAR Ship Wake Detection"
+  authors:
+    - family-names: Wang
+      given-names: Lu
+    - family-names: Sun
+      given-names: Bailiang
+    - family-names: Wang
+      given-names: Hongxing
+    - family-names: Huang
+      given-names: Shaoguang
+    - family-names: Ohtsuki
+      given-names: Tomoaki
+    - family-names: Mathiopoulos
+      given-names: "P. Takis"
+  journal: "IEEE Transactions on Aerospace and Electronic Systems"
+  volume: 62
+  start: 16327
+  end: 16342
+  year: 2026
+  doi: "10.1109/TAES.2026.3726921"
