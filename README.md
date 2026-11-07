@@ -54,7 +54,7 @@ pip install torch==2.0.1 torchvision==0.16.2 \
   --index-url https://download.pytorch.org/whl/cu118
 
 # 3) Clone this repository
-git clone https://github.com/luwang_Lucia/TFIFNet.git
+git clone https://github.com/luwang-Lucia/TFIFNet.git
 cd TFIFNet
 
 # 4) Build modules for calculating OBB overlap and performing Radon transform:
